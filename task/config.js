@@ -21,11 +21,11 @@ module.exports = {
       img: './dist/img/',
       scripts: {
         lib: './dist/scripts/lib/',
-        view: './src/scripts/view/'
+        view: './dist/scripts/view/'
       },
       styles: {
         lib: './dist/styles/lib/',
-        view: './src/styles/view/'
+        view: './dist/styles/view/'
       }
     }
   }

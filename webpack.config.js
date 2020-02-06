@@ -5,7 +5,7 @@ const config = require('./task/config');
 const path = require('path');
 const glob = require('glob');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -21,14 +21,14 @@ const entry = {};
 // JSの対象
 const jsFiles = glob.sync(`${config.path.src.scripts.view}**/*.js`);
 for (const file of jsFiles) {
-  const key = file.replace(config.path.src.root, config.path.dist.root).split('.js')[0];
+  const key = file.replace(config.path.src.root, '').split('.js')[0];
   entry[key] = file;
 }
 
 // CSSの対象
 const cssFiles = glob.sync(`${config.path.src.styles.view}**/*.+(sass|scss|css)`, { ignore: [`${config.path.src.styles.view}**/_*.+(sass|scss|css)`] });
 for (const file of cssFiles) {
-  const key = file.replace(config.path.src.root, config.path.dist.root).split(/\.(sass|scss|css)/)[0];
+  const key = file.replace(config.path.src.root, '').split(/\.(sass|scss|css)/)[0];
   entry[key] = file;
 }
 
@@ -38,7 +38,7 @@ module.exports = {
   entry,
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname)
+    path: path.resolve(__dirname, 'dist')
   },
   resolve: {
     alias: {
@@ -106,19 +106,18 @@ module.exports = {
   },
   plugins: [
     // distを削除
-    // new CleanWebpackPlugin({
-    //   cleanOnceBeforeBuildPatterns: ['dist'],
-    //   cleanAfterEveryBuildPatterns: ['dist/styles/**/*.js']
-    // }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, config.path.dist.root)]
+    }),
     // ファイルコピー
     new CopyPlugin([
       {
         from: `${config.path.src.img}`,
-        to: `${config.path.dist.img}`
+        to: 'img'
       },
       {
         from: `${config.path.src.html}`,
-        to: `${config.path.dist.html}`
+        to: 'html'
       }
     ]),
     new OptimizeCSSAssetsPlugin({

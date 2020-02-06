@@ -1,0 +1,12 @@
+//--------------------------
+// setting
+//--------------------------
+@charset "UTF-8";
+
+body {
+  display: flex;
+
+  div.main-content {
+    display: grid;
+  }
+}

@@ -19,16 +19,16 @@ const isProduction = process.env.NODE_ENV === 'production';
 const entry = {};
 
 // JSの対象
-const jsFiles = glob.sync(`${config.path.src.scripts.view}**/*.js`);
+const jsFiles = glob.sync(`${config.path.src.scripts.view}**/index.js`);
 for (const file of jsFiles) {
-  const key = file.replace(config.path.src.root, '').split('.js')[0];
+  const key = file.replace(config.path.src.root, '').split('/index.js')[0];
   entry[key] = file;
 }
 
 // CSSの対象
-const cssFiles = glob.sync(`${config.path.src.styles.view}**/*.+(sass|scss|css)`, { ignore: [`${config.path.src.styles.view}**/_*.+(sass|scss|css)`] });
+const cssFiles = glob.sync(`${config.path.src.styles.view}**/index.+(sass|scss|css)`);
 for (const file of cssFiles) {
-  const key = file.replace(config.path.src.root, '').split(/\.(sass|scss|css)/)[0];
+  const key = file.replace(config.path.src.root, '').split(/\/index\.(sass|scss|css)/)[0];
   entry[key] = file;
 }
 

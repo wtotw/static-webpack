@@ -1,8 +1,8 @@
 'use strict';
 
-import CountLog from '@scripts/model/CountLog';
+import CountLog from '@scripts/model/common/CountLog';
 
-// console.log('Highway Route Result!');
+console.log('Highway Route Result!');
 
 function getTest () {
   const countLog = new CountLog();
@@ -15,3 +15,10 @@ function getTest () {
 }
 
 getTest();
+
+const buttons = document.querySelectorAll('button#dialog');
+buttons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    alert('click');
+  });
+});

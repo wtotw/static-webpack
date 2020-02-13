@@ -29,7 +29,6 @@ buttons.forEach((button) => {
 });
 
 const app = new Vue({
-  el: '#app',
   data: {
     message: 'Hello Vue!'
   },
@@ -37,3 +36,4 @@ const app = new Vue({
     SearchForm
   ]
 });
+app.$mount('#app');

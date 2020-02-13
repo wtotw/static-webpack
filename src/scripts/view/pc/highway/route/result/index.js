@@ -1,5 +1,7 @@
 'use strict';
 
+import Vue from 'vue';
+
 import CountLog from '@scripts/model/common/CountLog';
 
 console.log('Highway Route Result!');
@@ -21,4 +23,11 @@ buttons.forEach((button) => {
   button.addEventListener('click', (event) => {
     alert('click');
   });
+});
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
 });

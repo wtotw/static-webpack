@@ -1,7 +1,10 @@
 'use strict';
 
+// Vue Component
 import Vue from 'vue';
+import SearchForm from '@scripts/view/common/searchForm.vue';
 
+// Other Files
 import CountLog from '@scripts/model/common/CountLog';
 
 console.log('Highway Route Result!');
@@ -29,5 +32,8 @@ const app = new Vue({
   el: '#app',
   data: {
     message: 'Hello Vue!'
-  }
+  },
+  comments: [
+    SearchForm
+  ]
 });

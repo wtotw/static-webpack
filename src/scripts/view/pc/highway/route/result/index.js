@@ -2,7 +2,7 @@
 
 // Vue Component
 import Vue from 'vue';
-import SearchForm from '@scripts/view/common/searchForm.vue';
+import SearchForm from '@scripts/components/form/searchForm.vue';
 
 // Other Files
 import CountLog from '@scripts/model/common/CountLog';
